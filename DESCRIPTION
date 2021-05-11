@@ -1,0 +1,13 @@
+Package: TheorStat
+Type: Package
+Title: Techniques and Concepts from an MS Course in Statistical Theory
+Version: 1.0
+Date: 2019-06-22
+Author: John E. Kolassa
+Maintainer: John E. Kolassa <kolassa@stat.rutgers.edu>
+Description: Calculations and plots are provided to exhibit techniques and concepts from an Master of Science course in statistical theory.  It includes estimation and testing concepts, including conditional inference.  Conditional inference for logistic regression is preformed using an implementation of the algorithm of Hirji, Mehta, and Patel (1987) <doi:10.2307/2289388>, using data they quote from Goorin et al. (1987) <doi:10.1200/JCO.1987.5.8.1178>.  Topics include estimation, bias, testing, and confidence intervals.  These calculations are useful for illustrating concepts that are difficult to understand without graphical assistance.
+License: GPL-3
+RoxygenNote: 6.1.1
+Imports: Rdpack (>= 0.7)
+RdMacros: Rdpack
+Encoding: UTF-8

@@ -1,0 +1,6 @@
+exportPattern("^[[:alpha:]]+")
+importFrom("graphics", "abline", "axis", "contour", "legend", "lines",
+           "plot", "polygon", "segments")
+importFrom("stats", "dnorm", "median", "optimize", "pbinom", "qbinom",
+           "qchisq", "rnorm", "rt", "t.test", "uniroot")
+importFrom(Rdpack,reprompt)
