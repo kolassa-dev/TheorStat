@@ -1,3 +1,13 @@
+#' Plot countours of the log likelihood for a logistic regression
+#' with an intercept parameter and one linear parameter.
+#' Examples apply this to data from \insertCite{mehtapatel;textual}{TheorStat}, citing \insertCite{goorinetal87;textual}{TheorStat}.
+#'
+#' @param dataset data set name
+#' @param xvl string with name of covariate in data set.
+#' @param yyl string with name of response variable representing counts of
+#'    successes in data set.
+#' @param nnl string with name of variable having counts.
+#' @examples
 #' #Columns in table are:
 #' # Lymphocytic Infiltration (1=low, 0=high)
 #' # Sex (1=male, 0=female)
