@@ -14,13 +14,13 @@ ctsci<-function(dist=qbeta,alpha=0.05){
       ylab="Observation", main="Continuous Confidence Interval Example",
       sub=paste(distname,"(theta,",sp,") Example",sep=""))
    lines(theta,ql,lty=1); lines(theta,qu,lty=1)
-   menu("0")
+   if(interactive()) menu("0")
    segments( mean(theta),dist(alpha/2,mean(theta),sp),
       mean(theta),dist(1-alpha/2,mean(theta),sp),lty=4)
-   menu("0")
+   if(interactive()) menu("0")
    typical=mean(range(c(ql,qu)))*1.2
    abline(h=typical,lty=2)
-   menu("0")
+   if(interactive()) menu("0")
    ep<-c(approx(ql,theta,typical)$y, approx(qu,theta,typical)$y)
    for(jj in 1:2) segments(ep[jj],typical,ep[jj],0,lty=3)
    legend(mean(theta),.2,lty=1:4,legend=c(".025, .975 quantiles",
