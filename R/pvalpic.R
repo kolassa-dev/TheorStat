@@ -8,6 +8,8 @@
 #' @param epsilon slope added to alternative hypothesis density
 #' @examples
 #' pvalpic(.5,.05)
+#' @export
+#' @importFrom graphics plot segments legend lines axis
 pvalpic<-function(gamma,epsilon){
    plot(c(0,1),c(0,2-gamma+epsilon),type="n",xaxs="i",yaxs="i",
       xlab="x",ylab="Density",

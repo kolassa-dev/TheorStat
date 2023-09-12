@@ -5,6 +5,8 @@
 #' @param alpha Error for confidence interval; interval has level 1-alpha.
 #' @examples
 #' uniformciplot()
+#' @export
+#' @importFrom graphics plot lines axis legend
 uniformciplot<-function(n=10,thetamax=10,alpha=0.05){
    n<-10
    theta<-c(0,thetamax)

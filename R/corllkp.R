@@ -5,9 +5,11 @@
 #' @param n sample size.
 #' @examples
 #' corllkp(1.5,.5,1.5,1)
+#' @export
+#' @importFrom graphics abline plot abline legend
 corllkp<-function(Sxx,Sxy,Syy,n){
    rho<-seq(600)/1000
-   lp=n*(rho - rho^ 3 + Sxy + rho^2*Sxy - rho*(Sxx + Syy))/(1 - rho^2)^2
+   lp<-n*(rho - rho^ 3 + Sxy + rho^2*Sxy - rho*(Sxx + Syy))/(1 - rho^2)^2
    plot(rho,lp,type="l",
       main="Log Likelihood Derivative for Normal Correlation",
       sub=paste("Sxy=",Sxy,",Sxx=1, Syy=",Syy,", n=",n))

@@ -4,6 +4,7 @@
 #' @param nsamp number of MC samples
 #' @param nalt number of alternatives to consider, greater than 0 and less
 #' than or equal to 1.
+#' @export
 #' @examples
 #' meanmedianpower()
 meanmedianpower<-function(n=9,nsamp=5000,nalt=100){

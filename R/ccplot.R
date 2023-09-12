@@ -2,6 +2,8 @@
 #' @param nn Binomial sample size
 #' @param x number of successes
 #' @export
+#' @importFrom graphics plot segments lines polygon legend
+#' @importFrom stats dnorm
 ccplot<-function(nn=10,x=4){
 p<-dbinom(0:nn,nn,.5)
 hp<-apply(cbind(c(p,0),c(0,p)),1,"max")

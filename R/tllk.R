@@ -1,4 +1,6 @@
 #' Display the log likelihood function for location parameter for sample of 5 independent Cauchy variates.
+#' @export
+#' @importFrom stats rt
 tllk<-function(){
    rrr<-rt(5,1)
    rrr<-c( -6.4140397,-19.8329737 ,-2.7293667,  2.3439417 ,-0.4798883)

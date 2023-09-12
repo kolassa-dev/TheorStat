@@ -2,6 +2,8 @@
 #'
 #' @param X exponential observation.
 #' @param lambda0 Initial exponential parameter.
+#' @export
+#' @importFrom graphics plot axis abline segments legend
 #' @examples
 #' llkmaximization()
 llkmaximization<-function(X=1.5,lambda0=1){
@@ -58,6 +60,8 @@ llkmaximization<-function(X=1.5,lambda0=1){
 #' \insertRef{mehtapatel}{TheorStat}
 #'
 #' \insertRef{goorinetal87}{TheorStat}
+#' @export
+#' @importFrom graphics contour
 plotllkcontour<-function(dataset,xvl,yyl,nnl){
    xv<-dataset[[xvl]]
    yy<-dataset[[yyl]]

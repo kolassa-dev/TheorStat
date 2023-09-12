@@ -2,6 +2,9 @@
 #' @param m sample size for binomial test.
 #' @param pi0 null hypothesis value
 #' @param alpha test level.
+#' @export
+#' @importFrom stats pbinom
+#' @importFrom graphics plot lines
 #' @examples
 #' binpowcurve(10,.5,.05)
 binpowcurve<-function(m,pi0,alpha){

@@ -1,6 +1,9 @@
 #' Draw graphical construction for confidence interval for continuous distribution.
 #' @param dist quantile function for construction of confidence interval.
 #' @param alpha 1-coverage for confidence interval.
+#' @importFrom graphics plot lines segments abline legend
+#' @importFrom stats approx qbeta
+#' @importFrom utils menu
 #' @export
 #' @examples
 #' ctsci()

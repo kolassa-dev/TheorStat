@@ -1,6 +1,8 @@
 #' Plot of error regions for normal testing.
 #' @examples
 #' testerrors()
+#' @export
+#' @importFrom graphics plot lines segments polygon legend
 testerrors<-function(){
    x<-(-40:60)/10
    plot(x,dnorm(x,-1,1),type="l",ylab="Density",

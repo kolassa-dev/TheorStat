@@ -3,6 +3,9 @@
 #' @param n number of independent observations
 #' @param alpha Error for confidence interval; interval has level 1-alpha.
 #' @param npts number of grid points for cdf inversion.
+#' @importFrom stats qbinom
+#' @importFrom graphics plot segments legend
+#' @export
 #' @examples
 #' binomialciplot(alpha=0.2)
 binomialciplot<-function(n=7,alpha=0.05,npts=10000){

@@ -1,9 +1,12 @@
 #' Calculate, and plot, coverage for binomial confidence intervals.
-#' @param n number of binomial samples
+#' @param nn number of binomial samples
 #' @param alpha 1-coverage
 #' @param alternative string incidating whether one- or two sided intervals are calculated
 #' @param plot logical flag indicating whether to plot.
 #' @param cm minimal value on vertical axis.
+#' @importFrom graphics abline plot legend
+#' @importFrom stats binom.test dbinom
+#' @importFrom Hmisc binconf
 #' @export
 fun.coverageplot<-function(nn,alpha=.05,
       alternative="two.sided",plot=TRUE,cm=0){

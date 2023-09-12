@@ -1,4 +1,6 @@
 #' Display the generalized likelihood ratio statistic for a simple null hypothesis about a binomial distribution.
+#' @export
+#' @importFrom graphics plot lines legend
 #' @examples
 #' binomialglrt()
 binomialglrt<-function(){

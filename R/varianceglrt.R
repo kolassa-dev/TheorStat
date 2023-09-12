@@ -1,4 +1,7 @@
 #' Diagram the generalized likelihood ratio test for the variance.
+#' @export
+#' @importFrom graphics plot lines legend
+#' @importFrom stats qchisq
 #' @examples
 #' varianceglrt()
 varianceglrt<-function(){

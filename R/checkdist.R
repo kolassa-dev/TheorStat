@@ -6,7 +6,6 @@
 #' @param n number of independent observations in second group.
 #' @param nsamp number of samples.
 #' @param nrat number of standard deviation ratios to explore, beginning at 1, ending at 10
-#' 
 #' @return A list with components
 #' out a matrix with nrat rows and two columns giving counts of samples with
 #'       type I errors.
@@ -15,6 +14,8 @@
 #' m copy of the input m
 #' n copy of the input n
 #' 
+#' @export
+#' @importFrom stats t.test rnorm median
 #' @examples
 #' a<-checkdist(4,4,nsamp=1000)
 checkdist<-function(m,n,nsamp=10000,nrat=5){
@@ -39,6 +40,9 @@ checkdist<-function(m,n,nsamp=10000,nrat=5){
 #' nsamp number of samples out of which the matrix out was recorded.
 #' m number in first group.
 #' n number in second group.
+#' @export
+#' @importFrom graphics plot lines legend
+#' @importFrom stats median
 #' @examples
 #' plotcheckdist(checkdist(4,4,nsamp=2000,nrat=5))
 plotcheckdist<-function(checkdistout){

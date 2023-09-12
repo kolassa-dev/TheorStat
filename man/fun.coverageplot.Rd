@@ -13,6 +13,8 @@ fun.coverageplot(
 )
 }
 \arguments{
+\item{nn}{number of binomial samples}
+
 \item{alpha}{1-coverage}
 
 \item{alternative}{string incidating whether one- or two sided intervals are calculated}
@@ -20,8 +22,6 @@ fun.coverageplot(
 \item{plot}{logical flag indicating whether to plot.}
 
 \item{cm}{minimal value on vertical axis.}
-
-\item{n}{number of binomial samples}
 }
 \description{
 Calculate, and plot, coverage for binomial confidence intervals.
