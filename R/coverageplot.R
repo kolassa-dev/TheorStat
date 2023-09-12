@@ -4,6 +4,7 @@
 #' @param alternative string incidating whether one- or two sided intervals are calculated
 #' @param plot logical flag indicating whether to plot.
 #' @param cm minimal value on vertical axis.
+#' @export
 fun.coverageplot<-function(nn,alpha=.05,
       alternative="two.sided",plot=TRUE,cm=0){
    pi<-(1:999)/1000
