@@ -74,10 +74,15 @@ fun.coverageplot<-function(nn,alpha=.05,exactonly=FALSE,
             lines(pi[use],count+cover[use,ii]-cm*count,lty=ii)
          }
          abline(h=count+1-alpha-cm*count,lty=dim(ciends)[2]+1)
-         if(exactonly){
-            abline(v=pi[min(seq(999)[cover[,ii]==min(cover[,ii])]) ],
-               lty=dim(ciends)[2]+2)
-         }
+#        if(exactonly){
+#           abline(v=pi[min(seq(dim(cover)[1])[cover[,ii]==min(cover[,ii])]) ],
+#              lty=dim(ciends)[2]+2)
+#        }
+      }
+      if(exactonly){
+         cs<-apply(cover,1,sum)
+         abline(v=pi[min(seq(length(cs))[cs==min(cs)])],
+            lty=dim(ciends)[2]+2)
       }
       count<-count+1
    }
