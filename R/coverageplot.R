@@ -14,7 +14,7 @@ fun.coverageplot<-function(nn,alpha=.05,exactonly=FALSE,
    if(exactonly){
       ciends<-array(NA,c(2,3,nn+1))
       dimnames(ciends)<-list(c("Lower","Upper"),
-         c("Normal","Exact","Wilson"),as.character(0:nn))
+         c("Exact","Normal","Wilson"),as.character(0:nn))
    }else{
       ciends<-array(NA,c(2,1,nn+1))
       dimnames(ciends)<-list(c("Lower","Upper"),
@@ -41,20 +41,22 @@ fun.coverageplot<-function(nn,alpha=.05,exactonly=FALSE,
    for(alt in alternatives){
       if(count==1) abline(h=1)
       for(x in 0:nn){
-         ciends[,1,x+1]<-fun.approxnormalci(x,nn,alpha=alpha,
-            alternative=alt)
-         ciends[,2,x+1]<-binom.test(x,nn,
+         ciends[,1,x+1]<-binom.test(x,nn,
             alternative=alt,conf.level=1-alpha)$conf.int
+         if(!exactonly){
+            ciends[,2,x+1]<-fun.approxnormalci(x,nn,alpha=alpha,
+               alternative=alt)
 # Binconf returns a 3-component vector, with the first component the 
 # estimate.  We don't need the estimate.
-         if(alt=="two.sided"){
-            ciends[,3,x+1]<-binconf(x,nn,alpha=alpha,method="wilson")[2:3]
-         }
-         if(alt=="greater"){
-            ciends[,3,x+1]<-c(binconf(x,nn,alpha=alpha/2,method="wilson")[2],1)
-         }
-         if(alt=="less"){
-            ciends[,3,x+1]<-c(0,binconf(x,nn,alpha=alpha/2,method="wilson")[3])
+            if(alt=="two.sided"){
+               ciends[,3,x+1]<-binconf(x,nn,alpha=alpha,method="wilson")[2:3]
+            }
+            if(alt=="greater"){
+               ciends[,3,x+1]<-c(binconf(x,nn,alpha=alpha/2,method="wilson")[2],1)
+            }
+            if(alt=="less"){
+               ciends[,3,x+1]<-c(0,binconf(x,nn,alpha=alpha/2,method="wilson")[3])
+            }
          }
       }
       for(jj in seq(length(pi))){
