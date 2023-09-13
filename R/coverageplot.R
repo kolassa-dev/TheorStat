@@ -79,14 +79,16 @@ fun.coverageplot<-function(nn,alpha=.05,exactonly=FALSE,
 #              lty=dim(ciends)[2]+2)
 #        }
       }
+      count<-count+1
+   }
+   if(plot){
       if(exactonly){
          cs<-apply(cover,1,sum)
          abline(v=pi[min(seq(length(cs))[cs==min(cs)])],
             lty=dim(ciends)[2]+2)
       }
-      count<-count+1
-   }
-   if(plot) legend(.3,.4,lty=seq(dim(ciends)[2]+1),
+      legend(.3,.4,lty=seq(dim(ciends)[2]+1),
           legend=c(dimnames(ciends)[[2]],"Nominal Level"))
+   }
    return(list(ciends=ciends,mincover=apply(cover,2,"min")))
 }
