@@ -61,8 +61,8 @@ fun.coverageplot<-function(nn,alpha=.05,
          for(ii in seq(dim(ciends)[2])) cover[jj,ii]<-sum(ps*hit[,ii])
       }
       if(plot){
-         for(ii in seq(dim(ciends)[2])) lines(pi,count+cover[,ii],lty=ii)
-         abline(h=count+1-alpha,lty=dim(ciends)[2]+1)
+         for(ii in seq(dim(ciends)[2])) lines(pi,count+cover[,ii]-cm,lty=ii)
+         abline(h=count+1-alpha-cm,lty=dim(ciends)[2]+1)
       }
       count<-count+1
    }
