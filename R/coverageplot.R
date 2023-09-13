@@ -23,10 +23,12 @@ fun.coverageplot<-function(nn,alpha=.05,exactonly=FALSE,
    cover<-array(NA,c(length(pi),dim(ciends)[2]))
    dimnames(cover)<-list(NULL,dimnames(ciends)[[2]])
    if(alternative=="both"){
+      newalpha<-alpha/2
       alternatives<-c("greater","less") 
       yaxtt<-"n"
       maxx<-1+(1-cm)
    }else{ 
+      newalpha<-alpha
       alternatives<-alternative
       yaxtt<-"s"
       maxx<-1
@@ -42,20 +44,20 @@ fun.coverageplot<-function(nn,alpha=.05,exactonly=FALSE,
       if(count==1) abline(h=1)
       for(x in 0:nn){
          ciends[,1,x+1]<-binom.test(x,nn,
-            alternative=alt,conf.level=1-alpha)$conf.int
+            alternative=alt,conf.level=1-newalpha)$conf.int
          if(!exactonly){
-            ciends[,2,x+1]<-fun.approxnormalci(x,nn,alpha=alpha,
+            ciends[,2,x+1]<-fun.approxnormalci(x,nn,alpha=newalpha,
                alternative=alt)
 # Binconf returns a 3-component vector, with the first component the 
 # estimate.  We don't need the estimate.
             if(alt=="two.sided"){
-               ciends[,3,x+1]<-binconf(x,nn,alpha=alpha,method="wilson")[2:3]
+               ciends[,3,x+1]<-binconf(x,nn,alpha=newalpha,method="wilson")[2:3]
             }
             if(alt=="greater"){
-               ciends[,3,x+1]<-c(binconf(x,nn,alpha=alpha/2,method="wilson")[2],1)
+               ciends[,3,x+1]<-c(binconf(x,nn,alpha=newalpha,method="wilson")[2],1)
             }
             if(alt=="less"){
-               ciends[,3,x+1]<-c(0,binconf(x,nn,alpha=alpha/2,method="wilson")[3])
+               ciends[,3,x+1]<-c(0,binconf(x,nn,alpha=newalpha,method="wilson")[3])
             }
          }
       }
@@ -73,7 +75,7 @@ fun.coverageplot<-function(nn,alpha=.05,exactonly=FALSE,
             use<-cover[,ii]>=cm
             lines(pi[use],count+cover[use,ii]-cm*count,lty=ii)
          }
-         abline(h=count+1-alpha-cm*count,lty=dim(ciends)[2]+1)
+         abline(h=count+1-newalpha-cm*count,lty=dim(ciends)[2]+1)
 #        if(exactonly){
 #           abline(v=pi[min(seq(dim(cover)[1])[cover[,ii]==min(cover[,ii])]) ],
 #              lty=dim(ciends)[2]+2)
