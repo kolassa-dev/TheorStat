@@ -75,8 +75,8 @@ fun.coverageplot<-function(nn,alpha=.05,exactonly=FALSE,
          }
          abline(h=count+1-alpha-cm*count,lty=dim(ciends)[2]+1)
          if(exactonly){
-            worst<-min(seq(999)[cover[,ii]==min(cover[,ii])])
-            abline(v=pi[worst])
+            abline(v=pi[min(seq(999)[cover[,ii]==min(cover[,ii])]) ],
+               lty=dim(ciends)[2]+2)
          }
       }
       count<-count+1
