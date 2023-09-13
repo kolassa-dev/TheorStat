@@ -31,7 +31,7 @@ fun.coverageplot<-function(nn,alpha=.05,exactonly=FALSE,
       yaxtt<-"s"
       maxx<-1
    }
-   if(plot) plot(c(0,1),c(cm,maxx),type="n", yaxt=yaxtt,
+   if(plot) plot(c(0,1),c(cm,maxx),type="n", yaxt=yaxtt,xaxs="i",yaxs="i",
          xlab="True Probability",ylab="Coverage",
          main=paste("Coverage for",1-alpha,
             if(substring(alternative,1,1)=="t") "" else 
