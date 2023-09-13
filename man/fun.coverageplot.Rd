@@ -7,9 +7,11 @@
 fun.coverageplot(
   nn,
   alpha = 0.05,
+  exactonly = FALSE,
   alternative = "two.sided",
   plot = TRUE,
-  cm = 0
+  cm = 0,
+  npi = 999
 )
 }
 \arguments{
@@ -22,6 +24,8 @@ fun.coverageplot(
 \item{plot}{logical flag indicating whether to plot.}
 
 \item{cm}{minimal value on vertical axis.}
+
+\item{npi}{Number of pi vectors to try}
 }
 \description{
 Calculate, and plot, coverage for binomial confidence intervals.

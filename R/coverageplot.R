@@ -4,13 +4,14 @@
 #' @param alternative string incidating whether one- or two sided intervals are calculated
 #' @param plot logical flag indicating whether to plot.
 #' @param cm minimal value on vertical axis.
+#' @param npi Number of pi vectors to try
 #' @importFrom graphics abline plot legend
 #' @importFrom stats binom.test dbinom
 #' @importFrom Hmisc binconf
 #' @export
 fun.coverageplot<-function(nn,alpha=.05,exactonly=FALSE,
-      alternative="two.sided",plot=TRUE,cm=0){
-   pi<-(1:999)/1000
+      alternative="two.sided",plot=TRUE,cm=0,npi=999){
+   pi<-seq(npi)/(npi+1)
    if(exactonly){
       ciends<-array(NA,c(2,1,nn+1))
       dimnames(ciends)<-list(c("Lower","Upper"),
@@ -20,8 +21,7 @@ fun.coverageplot<-function(nn,alpha=.05,exactonly=FALSE,
       dimnames(ciends)<-list(c("Lower","Upper"),
          c("Exact","Normal","Wilson"),as.character(0:nn))
    }
-   cover<-array(NA,c(length(pi),dim(ciends)[2]))
-   dimnames(cover)<-list(NULL,dimnames(ciends)[[2]])
+   cover<-array(NA,c(length(pi),dim(ciends)[2],1+(alternative=="both")))
    if(alternative=="both"){
       newalpha<-alpha/2
       alternatives<-c("greater","less") 
@@ -33,6 +33,7 @@ fun.coverageplot<-function(nn,alpha=.05,exactonly=FALSE,
       yaxtt<-"s"
       maxx<-1
    }
+   dimnames(cover)<-list(NULL,dimnames(ciends)[[2]],alternatives)
    if(plot) plot(c(0,1),c(cm,maxx),type="n", yaxt=yaxtt,xaxs="i",yaxs="i",
          xlab="True Probability",ylab="Coverage",
          main=paste("Coverage for",1-alpha,
@@ -68,29 +69,26 @@ fun.coverageplot<-function(nn,alpha=.05,exactonly=FALSE,
             for(ii in seq(dim(ciends)[2])) if((ciends[1,ii,x+1]<=pi[jj])&(
                ciends[2,ii,x+1]>=pi[jj])) hit[x+1,ii]<-TRUE
          }
-         for(ii in seq(dim(ciends)[2])) cover[jj,ii]<-sum(ps*hit[,ii])
+         for(ii in seq(dim(ciends)[2])) cover[jj,ii,count+1]<-sum(ps*hit[,ii])
       }
       if(plot){
          for(ii in seq(dim(ciends)[2])){
-            use<-cover[,ii]>=cm
-            lines(pi[use],count+cover[use,ii]-cm*count,lty=ii)
+            use<-cover[,ii,count+1]>=cm
+            lines(pi[use],count+cover[use,ii,count+1]-cm*count,lty=ii)
          }
          abline(h=count+1-newalpha-cm*count,lty=dim(ciends)[2]+1)
-#        if(exactonly){
-#           abline(v=pi[min(seq(dim(cover)[1])[cover[,ii]==min(cover[,ii])]) ],
-#              lty=dim(ciends)[2]+2)
-#        }
       }
       count<-count+1
    }
    if(plot){
       if(exactonly){
-         cs<-apply(cover,1,sum)
+         cs<-1-apply(1-cover,1,sum)
+#        cat("cs",cs,"\n")
          abline(v=pi[min(seq(length(cs))[cs==min(cs)])],
             lty=dim(ciends)[2]+2)
       }
       legend(.3,.4,lty=seq(dim(ciends)[2]+1),
           legend=c(dimnames(ciends)[[2]],"Nominal Level"))
    }
-   return(list(ciends=ciends,mincover=apply(cover,2,"min")))
+   return(invisible(list(ciends=ciends,mincover=apply(cover,2:3,"min"),cover=cover)))
 }
