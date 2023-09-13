@@ -12,13 +12,13 @@ fun.coverageplot<-function(nn,alpha=.05,exactonly=FALSE,
       alternative="two.sided",plot=TRUE,cm=0){
    pi<-(1:999)/1000
    if(exactonly){
-      ciends<-array(NA,c(2,3,nn+1))
-      dimnames(ciends)<-list(c("Lower","Upper"),
-         c("Exact","Normal","Wilson"),as.character(0:nn))
-   }else{
       ciends<-array(NA,c(2,1,nn+1))
       dimnames(ciends)<-list(c("Lower","Upper"),
          "Exact",as.character(0:nn))
+   }else{
+      ciends<-array(NA,c(2,3,nn+1))
+      dimnames(ciends)<-list(c("Lower","Upper"),
+         c("Exact","Normal","Wilson"),as.character(0:nn))
    }
    cover<-array(NA,c(length(pi),dim(ciends)[2]))
    dimnames(cover)<-list(NULL,dimnames(ciends)[[2]])
