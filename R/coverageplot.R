@@ -18,7 +18,7 @@ fun.coverageplot<-function(nn,alpha=.05,exactonly=FALSE,
    }else{
       ciends<-array(NA,c(2,1,nn+1))
       dimnames(ciends)<-list(c("Lower","Upper"),
-         "Exact"),as.character(0:nn))
+         "Exact",as.character(0:nn))
    }
    cover<-array(NA,c(length(pi),dim(ciends)[2]))
    dimnames(cover)<-list(NULL,dimnames(ciends)[[2]])
