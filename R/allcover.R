@@ -6,13 +6,13 @@
 #' @export
 ##' @importFrom MultNonParam util.jplot
 fun.allcover<-function(nn,larange=c(-6,-1),npts=500,plotdat=NULL){
-   cat("Enter fun.allcover\n")
+#  cat("Enter fun.allcover\n")
    if(is.null(plotdat)){
       plotdat<-list( lalphav=larange[1]+(0:npts)*diff(larange)/npts,
          out=rep(NA,npts+1))
-      cat("lalphav",plotdat$lalphav,"\n")
+#     cat("lalphav",plotdat$lalphav,"\n")
       for(jj in seq(npts+1)){
-         plotdat$out[jj]<-fun.coverageplot(nn,alpha=exp(plotdat$lalphav[jj]),plot=FALSE)$mincover["Exact"]
+         plotdat$out[jj]<-fun.coverageplot(nn,alpha=exp(plotdat$lalphav[jj]),plot=FALSE)$mincover["Exact","two.sided"]
       }
 #     keep<-c(TRUE,diff(plotdat$out)!=0)|c(diff(plotdat$out)!=0,TRUE)
 #     plotdat$lalphav<-plotdat$lalphav[keep] ; plotdat$out<-plotdat$out[keep]
