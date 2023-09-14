@@ -6,6 +6,7 @@
 #' @export
 ##' @importFrom MultNonParam util.jplot
 fun.allcover<-function(nn,larange=c(-6,-1),npts=500,plotdat=NULL){
+   cat("Enter fun.allcover\n")
    if(is.null(plotdat)){
       plotdat<-list( lalphav=larange[1]+(0:npts)*diff(larange)/npts,
          out=rep(NA,npts+1))
