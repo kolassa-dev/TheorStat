@@ -4,7 +4,7 @@
 \alias{fun.allcover}
 \title{Calculate true coverage probabilities for a variety of nominal binomial confidence intervals}
 \usage{
-fun.allcover(nn, larange = c(-6, -1), npts = 50000, plotdat = NULL)
+fun.allcover(nn, larange = c(-6, -1), npts = 500, plotdat = NULL)
 }
 \arguments{
 \item{nn}{number of binomial samples.}
