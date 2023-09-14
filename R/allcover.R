@@ -11,7 +11,7 @@ fun.allcover<-function(nn,larange=c(-6,-1),npts=500,plotdat=NULL){
       plotdat<-list( lalphav=larange[1]+(0:npts)*diff(larange)/npts,
          out=rep(NA,npts+1))
       for(jj in seq(npts+1)){
-         plotdat$out[jj]<-fun.coverageplot(nn,alpha=exp(plotdat$lalphav[[jj]]),plot=FALSE)$mincover["Exact"]
+         plotdat$out[jj]<-fun.coverageplot(nn,alpha=exp(plotdat$lalphav[jj]),plot=FALSE)$mincover["Exact"]
       }
       keep<-c(TRUE,diff(plotdat$out)!=0)|c(diff(plotdat$out)!=0,TRUE)
       plotdat$lalphav<-plotdat$lalphav[keep] ; plotdat$out<-plotdat$out[keep]
