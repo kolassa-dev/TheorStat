@@ -14,13 +14,12 @@ fun.allcover<-function(nn,larange=c(-6,-1),npts=500,plotdat=NULL){
       for(jj in seq(npts+1)){
          plotdat$out[jj]<-fun.coverageplot(nn,alpha=exp(plotdat$lalphav[jj]),plot=FALSE)$mincover["Exact","two.sided"]
       }
-#     keep<-c(TRUE,diff(plotdat$out)!=0)|c(diff(plotdat$out)!=0,TRUE)
-#     plotdat$lalphav<-plotdat$lalphav[keep] ; plotdat$out<-plotdat$out[keep]
+      keep<-c(TRUE,diff(plotdat$out)!=0)|c(diff(plotdat$out)!=0,TRUE)
+      plotdat$lalphav<-plotdat$lalphav[keep] ; plotdat$out<-plotdat$out[keep]
    }
 #  util.jplot(1-exp(plotdat$lalphav),plotdat$out,xlab="Nominal Coverage",
 #     main="True Coverage for Various Nominal Targets",
 #     ylab="True Coverage",sub=paste("Number of Binomial Trials",nn))
-   browser()
    plot(1-exp(plotdat$lalphav),plotdat$out,xlab="Nominal Coverage",
       type="l",
       main="True Coverage for Various Nominal Targets",
