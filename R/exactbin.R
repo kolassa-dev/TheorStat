@@ -3,7 +3,7 @@
 #' @param x1 Number of failures
 #' @param level Interval level
 #' @export
-#' @importFrom stat qf
+#' @importFrom stats qf
 fun.exactbin<-function(x0,x1,level=.95){
    alpha<-1-level
    fv<-if(x1==0) 1 else fv<-qf(alpha/2,2*x0+2,2*x1,
