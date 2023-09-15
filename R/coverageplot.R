@@ -51,15 +51,15 @@ fun.coverageplot<-function(nn,alpha=.05,exactonly=FALSE,
 # estimate.  We don't need the estimate.
             if(alt=="two.sided"){
                ciends[,3,x+1]<-binconf(x,nn,alpha=newalpha,method="wilson")[2:3]
-               ciends[,2,x+1]<-binconf(x,nn,alpha=newalpha,method="approximate")[2:3]
+               ciends[,2,x+1]<-binconf(x,nn,alpha=newalpha,method="asymptotic")[2:3]
             }
             if(alt=="greater"){
                ciends[,3,x+1]<-c(binconf(x,nn,alpha=newalpha,method="wilson")[2],1)
-               ciends[,2,x+1]<-c(binconf(x,nn,alpha=newalpha,method="approximate")[2],1)
+               ciends[,2,x+1]<-c(binconf(x,nn,alpha=newalpha,method="asymptotic")[2],1)
             }
             if(alt=="less"){
                ciends[,3,x+1]<-c(0,binconf(x,nn,alpha=newalpha,method="wilson")[3])
-               ciends[,2,x+1]<-c(0,binconf(x,nn,alpha=newalpha,method="approximate")[3])
+               ciends[,2,x+1]<-c(0,binconf(x,nn,alpha=newalpha,method="asymptotic")[3])
             }
          }
       }
