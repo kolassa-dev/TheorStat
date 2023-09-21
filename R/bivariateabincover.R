@@ -27,8 +27,10 @@ bivariatebincover<-function(n1=10,n2=10,npts=99){
       }
    }
    par(mfrow=c(1,2))
-   contour(pivecl[[1]],pivecl[[2]],coverm[,,1])
-   contour(pivecl[[1]],pivecl[[2]],coverm[,,2])
+   contour(pivecl[[1]],pivecl[[2]],coverm[,,1],levels=c(.8,.9,.95),
+      main="Coverage for wald interval")
+   contour(pivecl[[1]],pivecl[[2]],coverm[,,2],
+      main="Coverage for score interval")
    par(mfrow=c(1,1))
    return(invisible(coverm))
 }
