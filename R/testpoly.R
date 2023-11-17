@@ -5,6 +5,8 @@
 #' @param nmc Number of Monte Carlo simulations
 #' @param progress Logical indicating whether periodic updates of progress should be made.
 #' @export
+#' @importFrom polycor polychor
+#' @importFrom psych cohen.kappa
 #' @return list with two components: mat, a matrix with seven columns representing polychoric correlation with 2, 3, and 4 groupings, Pearson correlation, and kappa statistic for 2, 3, and 4 categories., and settings, rho and nsamp.
 fun.testpoly<-function(rho=.5,nsamp=50,nmc=10000,progress=F){
   out<-array(NA,c(7,nmc))
