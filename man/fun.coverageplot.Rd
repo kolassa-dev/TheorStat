@@ -26,6 +26,8 @@ fun.coverageplot(
 \item{cm}{minimal value on vertical axis.}
 
 \item{npi}{Number of pi vectors to try}
+
+\item{exactoly}{Logical indicating whether only exact tests are considered.}
 }
 \description{
 Calculate, and plot, coverage for binomial confidence intervals.

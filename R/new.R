@@ -4,6 +4,7 @@
 #' @param n1 Number of trials from group 1
 #' @param n2 Number of trials from group 1
 #' @export
+#' @importFrom stats glm binomial
 fun.wald<- function(y1,y2,n1,n2){
    out<-glm(c(1,1,0,0)~c(-1,1,-1,1),
       weight=c(y1,y2,n1-y1,n2-y2), family=binomial)

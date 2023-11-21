@@ -4,7 +4,7 @@
 #' @param npts number of grid points on each side of the pi1xpi2 grid
 #' @importFrom stats dbinom
 #' @importFrom DescTools BinomDiffCI
-#' @importFrom graphics contour
+#' @importFrom graphics contour par
 #' @export
 bivariatebincover<-function(n1=10,n2=10,npts=99){
    coverm<-array(0,c(npts,npts,2))
